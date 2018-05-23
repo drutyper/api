@@ -18,7 +18,7 @@ class Api::V1::PackagesController < ApplicationController
     @package = Package.new(package_params)
 
     if @package.save
-      render json: @package, status: :created, location: @package
+      render json: @package, status: :created, location: api_v1_package_url(@package)
     else
       render json: @package.errors, status: :unprocessable_entity
     end
